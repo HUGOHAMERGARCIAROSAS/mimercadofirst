@@ -1,0 +1,1 @@
+var mprogress=new Mprogress;$(function(){var e=document.querySelector('meta[name="csrf-token"]').getAttribute("content");$.ajaxSetup({headers:{"x-csrf-token":e}})});

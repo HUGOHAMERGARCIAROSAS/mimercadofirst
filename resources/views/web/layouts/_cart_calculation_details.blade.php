@@ -1,0 +1,1 @@
+<p class="total">Subtotal <span>{{ priceInSole(Cart::subtotal()) }}</span></p>

@@ -1,0 +1,227 @@
+[23-Jun-2019 08:39:11 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php on line 233
+[01-Oct-2019 06:06:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[01-Oct-2019 06:06:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:52:31 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:53:02 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:58:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:58:51 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:59:21 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:59:40 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 19:59:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:00:10 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:08:58 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:09:28 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:09:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:10:24 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:11:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:12:16 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:13:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:13:37 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:16:45 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:16:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:17:15 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:17:23 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:17:42 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:18:12 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:21:29 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:22:01 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:24:05 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:24:35 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:27:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:28:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:29:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[23-Oct-2019 20:29:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[29-Oct-2019 23:46:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[29-Oct-2019 23:46:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[05-Nov-2019 07:16:05 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[05-Nov-2019 07:16:36 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (110) in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php:67
+Stack trace:
+#0 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(67): PDO->__construct('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#1 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/Connector.php(43): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=127....', 'mimercad_delive...', ')O=B+1B.SRxF', Array)
+#2 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=127....', Array, Array)
+#3 /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connectors/ConnectionFactory.php(183): Illuminate\Database\Connectors\MyS in /home/mimercadodeli/mimercado/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664
+[06-Jan-2020 17:25:04 America/New_York] PHP Warning:  require(/home/mimercadodeli/public_html/APP/ejemplomimercado/../bootstrap/autoload.php): failed to open stream: No such file or directory in /home/mimercadodeli/public_html/APP/ejemplomimercado/index.php on line 22
+[06-Jan-2020 17:25:04 America/New_York] PHP Warning:  require(/home/mimercadodeli/public_html/APP/ejemplomimercado/../bootstrap/autoload.php): failed to open stream: No such file or directory in /home/mimercadodeli/public_html/APP/ejemplomimercado/index.php on line 22
+[06-Jan-2020 17:25:04 America/New_York] PHP Fatal error:  require(): Failed opening required '/home/mimercadodeli/public_html/APP/ejemplomimercado/../bootstrap/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/mimercadodeli/public_html/APP/ejemplomimercado/index.php on line 22
+[12-Jan-2020 22:58:28 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 22:59:02 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 22:59:53 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 23:01:03 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 23:02:17 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 23:02:56 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
+[12-Jan-2020 23:03:39 UTC] PHP Fatal error:  Namespace declaration statement has to be the very first statement or after any declare call in the script in /home/mimercadodeli/ejemplomimercado/app/Http/Controllers/Movil/ApiController.php on line 4
