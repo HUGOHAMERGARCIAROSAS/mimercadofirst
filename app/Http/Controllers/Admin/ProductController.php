@@ -626,13 +626,13 @@ class ProductController extends Controller
     }
 
     public function importarExcel(Request $request){
-        
-        $nombre = $request->excel_importar;
+       
          /** El método load permite cargar el archivo definido como primer parámetro */
-         Excel::load($request->excel, function($reader) {
-            
+        \Excel::load($request->excel, function($reader) {
+            $excel = $reader->get();
+
             $reader->each(function ($value) {
-                $busqueda_productos = Product::where('id',$value['ID'])->first();
+                $busqueda_productos = Product::where('id',$value->ID)->first();
                 if(!isset($busqueda_productos)){
                 $productos = Product::orderBy('orden','desc')->get();
                 $aux = $productos[0]->orden +1;

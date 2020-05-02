@@ -114,7 +114,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="">Archivo excel para importar :</label>
-                        <input type="file" name="excel_importar" class="form-control" required>
+                        <input type="file" name="excel" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">
