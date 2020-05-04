@@ -9,24 +9,25 @@
 <body>
     <table>
         <thead>
-        <tr>
+        <tr>															
+
             <th>ID</th>
-            <th>Orden</th>
-            <th>ID_Proveedor</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Porcentaje</th>
-            <th>Monto</th>
-            <th>Precio Final</th>
-            <th>Unidades</th>
-            <th>Escala</th>
-            <th>Categoria</th>
-            <th>Sub Categoria 1</th>
-            <th>Sub Categoria 2</th>
-            <th>Oferta</th>
-            <th>Disponible</th>
-            <th>Proveedor</th>
+            <th>orden</th>
+            <th>id_del_proveedor</th>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>precio</th>
+            <th>porcentaje</th>
+            <th>monto</th>
+            <th>precio_final</th>
+            <th>unidades</th>
+            <th>escala</th>
+            <th>categoria</th>
+            <th>sub_Categoria_1</th>
+            <th>sub_Categoria_2</th>
+            <th>oferta</th>
+            <th>disponible</th>
+            <th>proveedor</th>
         </tr>
         </thead>
         <tbody>
@@ -53,7 +54,7 @@
                     ?>
                 <td>
                     @if($subcategoria2 != null)
-                        {{$item->productSubCategory->subCategory->category->name}}
+                        {{$item->productSubCategory->subCategory->category->id}}
                     @endif
                     @if($subcategoria2 == null)
                         No se le asigno Categoria
@@ -62,7 +63,7 @@
                 
                 <td>
                     @if($subcategoria2 != null)
-                        {{ $item->productSubCategory->subCategory->name }}  
+                        {{ $item->productSubCategory->subCategory->id }}  
                     @endif
                     @if($subcategoria2 == null)
                         No se le asigno Subcategoria1
@@ -70,7 +71,7 @@
                 </td>
                 <td>
                     @if($subcategoria2 != null)
-                        {{ $item->productSubCategory->name }} 
+                        {{ $item->productSubCategory->id }} 
                     @endif
                     @if($subcategoria2 == null)
                         No se le asigno Subcategoria2

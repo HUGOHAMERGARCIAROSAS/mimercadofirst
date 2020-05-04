@@ -21,6 +21,8 @@ use DB;
 use Log;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
+
 use App\Exports\ProductsExport;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -564,12 +566,15 @@ class ProductController extends Controller
     }
 
     public function exportProduct()
-    {   
-        /*$productos = Product::all();
-        return view('admin.pages.product.export', [
-            'productos' => Product::all()
-        ]);*/
-        return Excel::download(new ProductsExport, 'MiMercadoDelivery.xlsx');
+    {   $productos = Product::all();
+        Excel::create('MiMercadoDelivery', function ($excel) use ($productos) {
+          
+            /** La hoja se llamará Usuarios */
+            $excel->sheet('Asistencia', function ($sheet) use ($productos) {
+                /** El método loadView nos carga la vista blade a utilizar */
+                $sheet->loadView('admin.pages.product.export', compact('productos'));
+            });
+        })->download('xlsx');
    }
 
     public function updateProductWithAjax(Request $request)
@@ -626,13 +631,20 @@ class ProductController extends Controller
     }
 
     public function importarExcel(Request $request){
-       
+  
+        try {
+            
+            DB::beginTransaction();
+          
          /** El método load permite cargar el archivo definido como primer parámetro */
         \Excel::load($request->excel, function($reader) {
+           
             $excel = $reader->get();
-
+            
             $reader->each(function ($value) {
-                $busqueda_productos = Product::where('id',$value->ID)->first();
+                $fila = $value->id;
+                $busqueda_productos = Product::where('id',intval($value->id))->first();
+               
                 if(!isset($busqueda_productos)){
                 $productos = Product::orderBy('orden','desc')->get();
                 $aux = $productos[0]->orden +1;
@@ -640,58 +652,79 @@ class ProductController extends Controller
                 $producto->orden = $aux;
                 $producto->disponible = 'NO';
                 $producto->product_today = 0;
-                $producto->name = $value['Nombre'];
-               // $producto->slug = $value['slug'];
-                $producto->price = $value['Precio'];
-                $producto->porcentaje = $value['Porcentaje'];
-                $producto->monto = $value['Monto'];
-                $producto->final = $value['Precio_Final'];
+                $producto->name = $value->nombre;
+               // $producto->slug = $value->slug;
+                $producto->price = $value->precio;
+                $producto->porcentaje = $value->porcentaje;
+                $producto->monto = $value->monto;
+                $producto->final = $value->precio_final;
                 $producto->state = 1;
-                $producto->description = $value['Descripcion'];
+                $producto->description = $value->descripcion;
                 
-                $busqueda_escala = ProductUnitMeasure::where('name',$value['Escala'])->where('abrv',$value['Unidades'])->first();
+                $busqueda_escala = ProductUnitMeasure::where('name',$value->escala)->where('abrv',$value->unidades)->first();
                 
                 $producto->product_scale_id = 1 ;
                 
                 $producto->product_unit_measure_id = $busqueda_escala->id;
-                
-                $producto->product_sub_category_id = $value['Sub_Categoria_2'];
-                //$producto->image = 'img/product/'.$value['imagen'];
+                //$busqueda_subcategoria = ProductSubCategory::where('id',intval($value->sub_categoria_2))->first();
+               
+                $producto->product_sub_category_id = intval($value->sub_categoria_2);
+                //$producto->image = 'img/product/'.$value->imagen;
+          
                 $producto->save();
+                    
                 }
                 else{
-                    $busqueda_productos->orden = $aux;
+                    $busqueda_productos->orden = $value->orden;
                 $busqueda_productos->disponible = 'NO';
                 $busqueda_productos->product_today = 0;
-                $busqueda_productos->name = $value['Nombre'];
-               // $producto->slug = $value['slug'];
-                $busqueda_productos->price = $value['Precio'];
-                $busqueda_productos->porcentaje = $value['Porcentaje'];
-                $busqueda_productos->monto = $value['Monto'];
-                $busqueda_productos->final = $value['Precio_Final'];
+                $busqueda_productos->name = $value->nombre;
+               // $producto->slug = $value->slug;
+                $busqueda_productos->price = $value->precio;
+                $busqueda_productos->porcentaje = $value->porcentaje;
+                $busqueda_productos->monto = $value->monto;
+                $busqueda_productos->final = $value->precio_final;
                 $busqueda_productos->state = 1;
-                $busqueda_productos->description = $value['Descripcion'];
+                $busqueda_productos->description = $value->descripcion;
                 
-                $busqueda_escala = ProductUnitMeasure::where('name',$value['Escala'])->where('abrv',$value['Unidades'])->first();
+                $busqueda_escala = ProductUnitMeasure::where('name',$value->escala)->where('abrv',$value->unidades)->first();
                 
                 $busqueda_productos->product_scale_id = 1 ;
                 
                 $busqueda_productos->product_unit_measure_id = $busqueda_escala->id;
-                
-                $busqueda_subcategoria = ProductSubCategory::where('id',$value['Sub_Categoria_2'])->first();
-                $busqueda_subcategoria->sub_category_id = $value['Sub_Categoria_1'];
-                $busqueda_subcategoria->save();
-                
-                $busqueda_productos->product_sub_category_id = $value['Sub_Categoria_2'];
-                //$producto->image = 'img/product/'.$value['imagen'];
-                $busqueda_productos->save();
-                }
                
+                    $busqueda_subcategoria = ProductSubCategory::where('id',intval($value->sub_categoria_2))->first();
+                //if(isset($busqueda_subcategoria)){
+                        $busqueda_subcategoria->sub_category_id = intval($value->sub_categoria_1);
+                        $busqueda_subcategoria->save();
+                    
+                        $busqueda_productos->product_sub_category_id = intval($value->sub_categoria_2);
+                        //$producto->image = 'img/product/'.$value['imagen;
+                        $busqueda_productos->save();
+                //    }
+         
+                }
+              
             });
+          
            
         });
-        return back();
         
+        DB::commit();
+  
+    } catch (Exception $e) {
+   
+        DB::rollBack();
+        Log::error($e->getLine());
 
+        return redirect()->route('products.index')->with('status', 'Error no se actualizo la base de datos, verifique si la subcategorias, unidades o escalas existen');
+        
+    }
+ 
+    return redirect()->route('products.index')->with('status', 'Productos actualizados correctamente !!');
+            
+        
+        
+        
     }
 }

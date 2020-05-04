@@ -74,6 +74,11 @@
     <div class="card">
         <div class="body">
             @include('flash::message')
+            @if (session('status'))
+                <div class="alert alert-info">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="table-responsive">
                 <table id="basic-datatable-products" class="table table-striped table-sm table-bordered">
                     <thead>
