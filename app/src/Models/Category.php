@@ -3,6 +3,7 @@
 namespace App\src\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Admin;
 
 class Category extends Model
 {
@@ -13,6 +14,7 @@ class Category extends Model
         'name',
         'slug',
         'state',
+        'proveedor_id',
         'imagen',
     ];
 
@@ -41,6 +43,11 @@ class Category extends Model
     public function existCategory($category, $categoryId)
     {
         return ($category->id == $categoryId);
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Admin::class, 'proveedor_id');
     }
 
 }

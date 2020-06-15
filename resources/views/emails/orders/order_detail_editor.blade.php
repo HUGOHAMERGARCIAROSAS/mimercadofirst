@@ -197,7 +197,7 @@
                                                         {{ $row->model->description }}
                                                     </td>
                                                     <td style="box-sizing: border-box;font-size: 10px;  color: #74787e; line-height: 15px; padding: 3px 0; text-align: center;">
-                                                        {{ priceInSole($row->model->price) }}
+                                                        {{ priceInSole($row->model->final) }}
                                                     </td>
                                                     <td style="box-sizing: border-box;font-size: 10px;  color: #74787e; line-height: 15px; padding: 3px 0; text-align: center;">
                                                         {{ $row->qty }}

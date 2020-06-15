@@ -27,37 +27,8 @@
             <i class="fa fa-plus-square"></i> Nueva Categoría
         </button>
 
-        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#exampleModal2">
-            <i class="fa fa-plus-square"></i> Nueva Sub Categoría 1
-        </button>
-
-        <button class="btn btn-success btn-lg ml-2" data-toggle="modal" data-target="#exampleModal3">
-            <i class="fa fa-plus-square"></i> Nueva Sub Categoría 2
-        </button>
     </div>
 
-    <div class="col-md-12 col-sm-12 mt-3">
-        <label for="select_category_id">Categorias</label>
-        <div class="input-group">
-            <select class="custom-select" name="category_id" id="select_category_id"
-                    onchange="searchCategory(this.value)">
-                <option value="">Mostrar las Categorias</option>
-                @foreach($categories as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-
-    <div class="col-md-12 col-sm-12 mt-3">
-        <label for="select_category_id">Sub Categorias 1</label>
-        <div class="input-group">
-            <select class="custom-select" name="select_sub_category_id" id="select_sub_category_id"
-                    onchange="searchSubCategory(this.value)">
-                <option value="">Mostrar Sub Categorias 1</option>
-            </select>
-        </div>
-    </div>
 
     <div class="col-md-12 mt-3">
         <div class="card">

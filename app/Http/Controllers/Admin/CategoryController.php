@@ -32,7 +32,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryRepository->allWithEstateActive('id', 'ASC');
+        $variable = auth()->user()->id;
+        $categories = Category::where('proveedor_id', $variable)->get();
         //$subcategories = $this->subCategoryRepository->allWithEstateActive('id', 'ASC');
 
         return view('admin.pages.category.index')->with([
@@ -51,10 +52,12 @@ class CategoryController extends Controller
             $imagen = $nombre;
         }
         try {
+            $variable = auth()->user()->id;
             $this->categoryRepository->create([
                 'name' => $name,
                 'slug' => Str::slug($name),
                 'imagen' => $imagen,
+                'proveedor_id'=> $variable,
             ]);
 
             Mensaje::flashCreateSuccessImportant();

@@ -34,8 +34,19 @@ class Product extends Model
         'final',
         'product_unit_measure_id',
         'product_scale_id',
-        'product_sub_category_id',
-        'provider_id'
+        'category_id',
+        'provider_id',
+        //detalle producto
+        'sku',
+        'pais',
+        'peso',
+        'color',
+        'material',
+        'garantia',
+        'condicion',
+        'detalle_condicion',
+        'caja',
+        'modelo',
     ];
 
     protected $imagesUploadDisk = 'web';
@@ -81,6 +92,10 @@ class Product extends Model
     public function slider()
     {
         return $this->hasOne(Slider::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function productSubCategory()

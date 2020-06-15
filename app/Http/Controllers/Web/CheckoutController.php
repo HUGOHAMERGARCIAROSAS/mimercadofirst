@@ -103,12 +103,13 @@ class CheckoutController extends Controller
                 $detail->order_id = $order->id;
                 $detail->product_id = $row->model->id;
                 $detail->final = $row->model->final;
+                $detail->price = $row->model->price;
                 $detail->quantify = $row->qty;
                 $detail->save();
             }
 
-            Mail::to($user->email)->send(new OrderDetailReceived($order, $user));
-            Mail::to("ventas@mimercado.delivery")->send(new OrderDetailReceived($order, $user));
+           // Mail::to($user->email)->send(new OrderDetailReceived($order, $user));
+            //Mail::to("ventas@mimercado.delivery")->send(new OrderDetailReceived($order, $user));
 
             Cart::destroy();
 
@@ -185,13 +186,14 @@ class CheckoutController extends Controller
                 $detail = new OrderDetail();
                 $detail->order_id = $order->id;
                 $detail->product_id = $row->model->id;
+                $detail->price = $row->model->price;
                 $detail->final = $row->model->final;
                 $detail->quantify = $row->qty;
                 $detail->save();
             }
-
-            Mail::to($user->email)->send(new OrderDetailReceived($order, $user));
-            Mail::to("ventas@mimercado.delivery")->send(new OrderDetailReceived($order, $user));
+            
+           // Mail::to($user->email)->send(new OrderDetailReceived($order, $user));
+           // Mail::to("ventas@mimercado.delivery")->send(new OrderDetailReceived($order, $user));
 
             Cart::destroy();
 

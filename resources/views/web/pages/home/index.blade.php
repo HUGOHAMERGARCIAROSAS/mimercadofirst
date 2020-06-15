@@ -14,7 +14,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="featured-tab"
                                    data-toggle="tab" href="#featured" role="tab" aria-selected="true">
-                                    FRUTAS
+                                    PRODUCTOS
                                 </a>
                             </div>
                         </nav>

@@ -18,6 +18,7 @@ class OrderDetail extends Model
         'product_id',
         'price',
         'quantify',
+        'final'
     ];
 
     public function order()
@@ -32,7 +33,7 @@ class OrderDetail extends Model
 
     public function calculateSubtotal()
     {
-        return ($this->price * $this->quantify);
+        return ($this->final * $this->quantify);
     }
 
 }

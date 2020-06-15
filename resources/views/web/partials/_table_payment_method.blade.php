@@ -17,29 +17,29 @@
 </style>
 <div class="table-responsive">
     <table class="table table-bordered text-center" id="table_payment">
-        <thead class="thead-light">
+         <thead class="thead-light">
         <tr>
             <th>NUESTRAS CUENTAS</th>
             <th>
-                <img src="{{ asset('assets/frutasencasa/tarjetas/bcp.png') }}"
-                     alt="Cuenta MiMercado.Delivery">
+                NÚMERO DE CUENTA
             </th>
-            <th>
-                <img src="{{ asset('assets/frutasencasa/tarjetas/interbank.png') }}"
-                     alt="Cuenta MiMercado.Delivery">
+            <th>CÓDIGO INTERBANCARIO (CCI)
             </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>NÚMERO DE CUENTA</td>
-            <td>57092793316075</td>
-            <td>6153072894473</td>
+            <!--<td>NÚMERO DE CUENTA</td>-->
+            <td><img src="{{ asset('assets/frutasencasa/tarjetas/bcp.png') }}"
+                alt="Cuenta MiMercado.Delivery"></td>
+            <td>57098451849065</td>
+            <td>00257019845184906505</td>
         </tr>
         <tr>
-            <td>CÓDIGO INTERBANCARIO (CCI)</td>
-            <td>00257019279331607509</td>
-            <td>00361501307289447322</td>
+            <td><img src="{{ asset('assets/frutasencasa/tarjetas/interbank.png') }}"
+                alt="Cuenta MiMercado.Delivery"></td>
+            <td>6003002477421</td>
+            <td>00360000300247742145</td>
         </tr>
         </tbody>
     </table>

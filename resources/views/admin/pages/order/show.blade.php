@@ -34,10 +34,30 @@
                             Urbanizacion: {{ $order->shippingCost->urbanization }} <br>
                             Referencia: {{ $order->reference }}
                         </p>
+                        @if($order->payment_method=="Pago Online")
                         <h6>Método de pago</h6>
                         <p>
                             {{ $order->payment_method }} <br>
                         </p>
+                        <h3>Datos de la Transaccion</h3>
+                        <h6>Marca</h6>
+                        <p>
+                            {{ $marca }} <br>
+                        </p>
+                        <h6>Tarjeta</h6>
+                        <p>
+                            {{ $tarjeta }} <br>
+                        </p>
+                        <h6>Estado</h6>
+                        <p>
+                            {{ $estado }} <br>
+                        </p>
+                        <h6>Fecha y Hora</h6>
+                        <p>
+                            {{ $order->created_at }} <br>
+                        </p>
+                        
+                        @endif
                     </div>
                     <div class="title">
                         <h4>Pedido #{{ $order->id }}</h4>
@@ -63,7 +83,7 @@
                             <tr>
                                 <td>{{ $index+1 }}</td>
                                 <td>{{ $detail->product->name }}</td>
-                                <td>{{ priceInSole($detail->product->price) }}</td>
+                                <td>{{ priceInSole($detail->product->final) }}</td>
                                 <td>{{ $detail->quantify }}</td>
                                 <td>{{ priceInSole($detail->calculateSubtotal($detail)) }}</td>
                             </tr>

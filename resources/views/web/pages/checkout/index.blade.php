@@ -193,6 +193,13 @@
                                                     alguna de las siguientes
                                                     cuentas: </p>
                                                 @include('web.partials._table_payment_method')
+                                                 <div class="row">
+                                                    <div class="col-2"><img src="{{ asset('assets/frutasencasa/tarjetas/yape.jpg') }}"
+                                                        alt="Yape" style="width: 100%;height:50% "></div>
+                                                    <div class="col-8"><h1 style="font-size: 70px;"><strong>948313098</strong> </h1></div>
+                                                    <div class="col-2"><img src="{{ asset('assets/frutasencasa/tarjetas/logos.png') }}"
+                                                        alt="bancos" style="width: 100%;height:50% " ></div>
+                                                  </div>
                                                 <h4><strong>PASO 2: &nbsp;</strong>
                                                     <span class="font-weight-bold"
                                                           style="font-size: 14px;color: #666666;">Dar clic en </span>
@@ -261,7 +268,6 @@
                                                                 name="pagoAno"
                                                                 data-culqi="card[exp_year]" id="card[exp_year]"
                                                                 required>
-                                                            <option value="2019">2019</option>
                                                             <option value="2020">2020</option>
                                                             <option value="2021">2021</option>
                                                             <option value="2022">2022</option>

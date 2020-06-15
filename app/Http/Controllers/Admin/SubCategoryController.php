@@ -54,7 +54,7 @@ class SubCategoryController extends Controller
             return redirect()->back()->withInput();
         }
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories_prov.index');
     }
 
     public function update(Request $request, $id)

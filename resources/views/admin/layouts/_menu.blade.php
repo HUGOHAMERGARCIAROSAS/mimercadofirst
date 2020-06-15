@@ -6,7 +6,13 @@
             <div class="dropdown">
                 <span>Bienvenido,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown">
-                    <strong>{{ Auth::user()->nombres }}</strong>
+                    @if (Auth::user()->role == 'admin')
+                        <strong>{{ Auth::user()->propietario }}</strong>
+                    @endif
+                    @if (Auth::user()->role == 'provider')
+                        <strong>{{ Auth::user()->razon_social }}</strong>
+                    @endif
+                    
                     <i class="wi wi-wind-north"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right account">
@@ -47,8 +53,7 @@
                             <a href="#" class="has-arrow"><i class="icon-tag"></i>
                                 <span>Tienda</span></a>
                             <ul>
-                                <li class="{{ ! Route::is('coupons.index') ?: 'active' }}">
-                                    <a href="{{ route('coupons.index') }}">Cupones</a></li>
+                                
                                 <li class="{{ ! Route::is('slider.index') ?: 'active' }}">
                                     <a href="{{ route('slider.index') }}">Slider</a></li>
                                 <li class="{{ ! Route::is('shipping-cost.index') ?: 'active' }}">
@@ -58,64 +63,62 @@
                                 <li class="{{ !Route::is('admin.users.index') ?: 'active' }}">
                                     <a href="{{ route('admin.users.index') }}">Usuarios</a>
                                 </li>
-
+                                <!--
                                 <li class="{{ !Route::is('categories.index') ?: 'active' }}">
                                     <a href="{{ route('categories.index') }}">Categoría</a>
-                                </li>
+                                </li>-->
                             </ul>
                         </li>
 
-                        <li class="{{ ! Route::is('admin.providers.productos') ?: 'active' }}">
-                            <a href="{{ route('products.index') }}"><i class="icon-screen-tablet"></i>
-                                Productos</a>
-                        </li>
+                       
 
                         <li class="{{ ! Route::is('admin.order.index') ?: 'active' }}">
                             <a href="{{ route('admin.order.index') }}"><i class="icon-basket-loaded"></i>
                                 Pedidos
                             </a>
                         </li>
-
+                        <!--
                         <li class="{{ !Route::is('tips.index') ?: 'active'}}">
                             <a href="{{ route('tips.index') }}"><i class="icon-home"></i>
                                 Tips y Recetas
                             </a>
-                        </li>
+                        </li>-->
 
-                        <li class="{{ !Route::is('recipes.index') ?: 'active'}}">
-                            <a href="{{ route('recipes.index') }}"><i class="icon-home"></i>
-                                Promociones
-                            </a>
-                        </li>
-
+                      
+                        <!--
                         <li class="{{ !Route::is('store-image.index') ?: 'active' }}">
                             <a href="{{ route('store-image.index') }}"><i class="icon-home"></i>
                                 Ventas Mayoristas
                             </a>
-                        </li>
-
+                        </li>-->
+                        <!--
                         <li>
                             <a href="{{ route('banners.index') }}"><i class="icon-home"></i>
                                 Banner
                             </a>
-                        </li>
-
+                        </li>-->
+                        <!--
                         <li class="{{ ! Route::is('comments.index') ?: 'active' }}">
                             <a href="{{ route('comments.index') }}"><i class="icon-bubbles"></i>
                                 Testimonios
                             </a>
+                        </li>-->
+                        <li class="{{ ! Route::is('categories_prov.index') ?: 'active' }}">
+                            <a href="{{ route('categories_prov.index') }}"><i class="icon-bubbles"></i>
+                                Categorias
+                            </a>
                         </li>
                         <li class="{{ ! Route::is('admin.providers.index') ?: 'active' }}">
-                            <a href="{{ route('admin.providers.index') }}"><i class="icon-bubbles"></i>
+                            <a href="{{ route('admin.providers.index') }}"><i class="icon-user"></i>
                                 Proveedores
                             </a>
                         </li>
-
+                        <!--
                         <li class="{{ !Route::is('admin.subscriber.index') ?: 'active' }}">
                             <a href="{{ route('admin.subscriber.index') }}"><i class="icon icon-user-follow"></i>
                                 Suscriptores
                             </a>
-                        </li>
+                        </li>-->
 
                         {{--<li class="#">--}}
                             {{--<a href="#" class="has-arrow"><i class="icon-grid"></i>--}}
@@ -136,16 +139,31 @@
                         {{--</li>--}}
                         @endif
                         @if(auth()->user()->role == 'provider')
+                        <li class="{{ !Route::is('recipes.index') ?: 'active'}}">
+                            <a href="{{ route('recipes.index') }}"><i class="icon-home"></i>
+                                Promociones
+                            </a>
+                        </li>
+                        <li class="{{ ! Route::is('coupons.index') ?: 'active' }}">
+                            <a href="{{ route('coupons.index') }}"><i class="icon-tag"></i>Cupones</a></li>
                         <li class="{{ ! Route::is('admin.providers.productos') ?: 'active' }}">
-                            <a href="{{ route('admin.providers.productos') }}"><i class="icon-screen-tablet"></i>
+                            <a href="{{ route('products.index') }}"><i class="icon-screen-tablet"></i>
                                 Productos</a>
+                        </li>
+                        <li class="{{ !Route::is('categories.index') ?: 'active' }}">
+                            <a href="{{ route('categories.index') }}"><i class="icon-bubbles"></i>Categoría</a>
+                        </li>
+                        <li class="{{ ! Route::is('admin.providers.pedidos') ?: 'active' }}">
+                            <a href="{{ route('admin.providers.pedidos') }}"><i class="icon-basket-loaded"></i>
+                                Pedidos
+                            </a>
                         </li>
                         @endif
                     </ul>
                     
                 </nav>
             </div>
-
+            
             <div class="tab-pane p-l-15 p-r-15" id="question">
                 <ul class="right_chat list-unstyled">
                     <li class="menu-heading" style="font-weight: 600; padding-bottom: 10px;">Soporte Técnico</li>

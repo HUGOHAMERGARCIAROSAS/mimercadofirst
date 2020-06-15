@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\src\Repositories\ShippingCostRepository;
 use App\src\Util\Mensaje;
 use Illuminate\Http\Request;
+use App\src\Models\Departamento;
+use App\src\Models\Provincia;
+use App\src\Models\Distrito;
 use Exception;
 use Log;
 
@@ -20,15 +23,21 @@ class ShippingCostController extends Controller
 
     public function index()
     {
+        $departamentos = Departamento::all();
+        $provincias = Provincia::where('idDepa',15)->get();
+        $distritos = Distrito::where('idProv',127)->get();
         return view('admin.pages.shipping_cost.index')->with([
             'costs' => $this->shippingCostRepository->listShippingCostWithOrder(),
+            'departamentos' => $departamentos,
+            'provincias' => $provincias,
+            'distritos' => $distritos,
         ]);
     }
 
     public function store(Request $request)
     {
         try {
-            $this->shippingCostRepository->create($request->only('urbanization', 'cost'));
+            $this->shippingCostRepository->create($request->only('distrito_id', 'cost','zona'));
 
             Mensaje::flashCreateSuccessImportant();
         } catch (Exception $e) {
@@ -45,7 +54,7 @@ class ShippingCostController extends Controller
         try {
             $cost = $this->shippingCostRepository->find($id);
             $shippingCostRepository = new ShippingCostRepository($cost);
-            $shippingCostRepository->update($request->only('urbanization', 'cost'));
+            $shippingCostRepository->update($request->only('distrito_id', 'cost','zona'));
 
             Mensaje::flashUpdateSuccessImportant();
         } catch (Exception $e) {

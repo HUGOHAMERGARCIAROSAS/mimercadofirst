@@ -9,11 +9,11 @@
             <form class="form-auth-small" method="POST" action="{{ route('admin.login') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="signin-email" class="control-label sr-only">Email</label>
-                    <input type="email"
+                    <label for="signin-email" class="control-label sr-only">Usuario</label>
+                    <input type="text"
                            class="form-control {{ $errors->has('email') ? ' parsley-error' : '' }}"
                            name="email" id="signin-email"
-                           placeholder="E-mail" value="{{ old('email') }}"
+                           placeholder="Usuario" value="{{ old('email') }}"
                            required>
                     @if ($errors->has('email'))
                         <ul class="parsley-errors-list filled">

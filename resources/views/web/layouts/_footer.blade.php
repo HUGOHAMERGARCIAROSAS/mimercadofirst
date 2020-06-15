@@ -52,10 +52,10 @@
                 <div class="col-lg-4 col-md-12 order-2 order-md-2 order-sm-2 order-lg-1">
                     <div class="social-media-section">
                         <h2>Disponible en:</h2>
-                            <img src="assets/images/logo01.png">
+                            <img src="{{asset('assets/images/logo01.png')}}">
                             <a href=""></a>
                             <a href=""></a>
-                            <img src="assets/images/logo02.png">
+                            <img src="{{asset('assets/images/logo02.png')}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 order-1 order-md-1 order-sm-1 order-lg-2  mb-sm-50 mb-xs-50">

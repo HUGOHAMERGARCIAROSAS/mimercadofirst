@@ -8,6 +8,11 @@
                    required>
         </div>
     </div>
+    <?php $proveedor_id = auth()->user()->id; ?>
+    <input type="hidden" class="form-control"
+    name="proveedor_id"
+    required value="{{$proveedor_id}}"
+    >
     <div class="col-lg-2">
         <div class="form-group">
             <label>Fecha</label>

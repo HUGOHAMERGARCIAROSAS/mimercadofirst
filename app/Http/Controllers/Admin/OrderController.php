@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\src\Models\Order;
-use App\src\Repositories\CouponRepository;
-use App\src\Repositories\OrderRepository;
-use Maatwebsite\Excel\Facades\Excel;
-use Exception;
 use Log;
+use Exception;
+use Culqi\Culqi;
+use App\src\Models\Order;
+use Culqi\CulqiException;
+use App\src\Models\OrderDetail;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\src\Repositories\OrderRepository;
+use App\src\Repositories\CouponRepository;
+use DB;
+
 
 class OrderController extends Controller
 {
@@ -40,18 +45,59 @@ class OrderController extends Controller
 
         $calculateSubTotal = 0.0;
         foreach ($order->orderDetail as $detail) {
-            $calculateSubTotal += ($detail->price * $detail->quantify);
+            $calculateSubTotal += ($detail->final * $detail->quantify);
         }
-
         $calculateTotal = (($calculateSubTotal - $discount) + $shippingCost);
+        $pedido = $this->orderRepository->find($id);
+        $SECRET_KEY = "sk_live_l1aJknZVIspM4R1L";
+        $culqi = new Culqi(array('api_key' => $SECRET_KEY));
+                if ($pedido->payment_method=='Pago Online'){
+                    if ($pedido->payment_method){
+                        $pedido->payment_method = 'Pago Online';
+                        $transaccion= $culqi->Charges->get($pedido->culqui_order_id);
+                        if ($transaccion->outcome->type == 'venta_exitosa'){
+                            $estado='EXITOSA';
+                        }else{
+                            $estado='RECHAZADA';
+                        }
+                        $pedido->transaccion = array(
+                            'created' => $transaccion->creation_date,
+                            'marca' => $transaccion->source->iin->card_brand,
+                            'tarjeta' => $transaccion->source->card_number,
+                            'estado' => $estado,
+                        );
+                        $pedido->total =  number_format($transaccion->amount / 100, 2, '.', '');
+                        }else{
+                            $pedido->payment_method = 'Transferencia Bancaria';
+                            $pedido->transaccion = array(
+                                'created' => '',
+                                'marca' => '',
+                                'tarjeta' => '',
+                                'estado' => '',
+                            );
+                        }
 
-        return view('admin.pages.order.show')->with([
-            'order' => $order,
-            'subtotal' => $calculateSubTotal,
-            'totalOrder' => $calculateTotal,
-            'discount' => $discount,
-            'shippingCost' => $shippingCost,
-        ]);
+                    return view('admin.pages.order.show')->with([
+                        'order' => $order,
+                        'subtotal' => $calculateSubTotal,
+                        'totalOrder' => $calculateTotal,
+                        'discount' => $discount,
+                        'pedido' => $pedido,
+                        'shippingCost' => $shippingCost,
+                        'created' => $transaccion->creation_date,
+                        'marca' => $transaccion->source->iin->card_brand,
+                        'tarjeta' => $transaccion->source->card_number,
+                        'estado' => $estado,
+                    ]);
+                }else{
+                    return view('admin.pages.order.show')->with([
+                        'order' => $order,
+                        'subtotal' => $calculateSubTotal,
+                        'totalOrder' => $calculateTotal,
+                        'discount' => $discount,
+                        'shippingCost' => $shippingCost,
+                    ]);
+                }
     }
 
     public function destroy($id)

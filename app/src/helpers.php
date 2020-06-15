@@ -22,5 +22,5 @@ function addMarginBottom40($text)
 
 function priceFormat($final)
 {
-    return sprintf("%01.1f", $final);
+    return sprintf("%01.2f", $final);
 }

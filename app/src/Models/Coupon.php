@@ -18,6 +18,7 @@ class Coupon extends Model
 
     protected $fillable = [
         'code',
+        'proveedor_id',
         'discount',
         'state',
         'active',

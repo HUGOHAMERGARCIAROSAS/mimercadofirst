@@ -6,6 +6,7 @@ use App\src\Repositories\RecipeRepository;
 use App\src\Util\Mensaje;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\src\Models\Recipe;
 use Exception;
 use Log;
 
@@ -20,8 +21,10 @@ class RecipeController extends Controller
 
     public function index()
     {
+        $variable = auth()->user()->id;
+        $recipes = Recipe::where('proveedor_id', $variable)->get();
         return view('admin.pages.recipe.index')->with([
-            'recipes' => $this->recipeRepository->all(),
+            'recipes' => $recipes
         ]);
     }
 
@@ -35,7 +38,7 @@ class RecipeController extends Controller
         try {
             $recipe = $this->recipeRepository->create($request->all());
 
-            $recipe->compressImage($request->hasFile('image'));
+           // $recipe->compressImage($request->hasFile('image'));
 
             Mensaje::flashCreateSuccessImportant();
         } catch (Exception $e) {
@@ -65,7 +68,7 @@ class RecipeController extends Controller
                 $recipe->uploadImage(request()->file('image'), 'image');
             }
 
-            $recipe->compressImage($request->hasFile('image'));
+            //$recipe->compressImage($request->hasFile('image'));
 
             $recipeRepository = new RecipeRepository($recipe);
             $recipeRepository->update($recipe->toArray());

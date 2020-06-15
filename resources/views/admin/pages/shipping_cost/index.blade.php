@@ -35,7 +35,8 @@
                         @slot('datatable_header')
                             <tr>
                                 <th width="50">Orden</th>
-                                <th>Ubanización</th>
+                                <th>Distrito / Provincia / Departamento</th>
+                                <th>Zona</th>
                                 <th width="70">Tarifario</th>
                                 <th>Acciones</th>
                             </tr>
@@ -58,7 +59,8 @@
                                             @endfor
                                         </select>
                                     </td>
-                                    <td>{{ $item->urbanization }}</td>
+                                    <td>{{ $item->distrito->distrito }} / {{$item->distrito->provincia->provincia}} / {{$item->distrito->provincia->departamento->departamento}}  </td>
+                                    <td>{{$item->zona}}</td>
                                     <td>
                                         <input type="text" class="form-control"
                                                name="cost"
@@ -67,15 +69,16 @@
                                         >
                                     </td>
                                     <td>
+                                        
                                         <button class="btn btn-info btn-sm"
                                                 data-toggle="modal"
                                                 data-target="#modalUpdate"
                                                 data-id="{{ $item->id }}"
-                                                data-urbanization="{{ $item->urbanization }}"
+                                                data-zona="{{ $item->zona }}"
                                                 data-cost="{{ $item->cost }}"
                                                 title="Editar">
                                             <i class="fa fa-edit"></i>
-                                        </button>
+                                        </button> 
 
                                         <button class="btn btn-danger js-sweetalert btn-sm"
                                                 data-url="{{ route('shipping-cost.destroy', $item->id) }}"
@@ -107,18 +110,48 @@
                 <form action="{{ route('shipping-cost.store') }}" method="post">
                     {{  csrf_field() }}
                     <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="form-group col-sm-4">
+                                <label for="code">Departamento</label>
+                                <select id="select_departamento" class="form-control"  id="">
+                                    <option value="">Seleccione</option>
+                                    @foreach ($departamentos as $item)
+                                        <option value="{{$item->idDepa}}" @if($item->idDepa == 15) selected @endif>{{$item->departamento}}</option>
+                                    @endforeach
+                                </select>
+                               
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="code">Provincia</label>
+                                <select id="select_provincia" class="form-control" id="">
+                                    @foreach ($provincias as $item)
+                                    <option value="{{$item->idProv}}" @if($item->idProv == 127) selected @endif>{{$item->provincia}}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="code">Distrito</label>
+                               <select id="select_distrito" class="form-control" name="distrito_id" id="">
+                                    @foreach ($distritos as $item)
+                                    <option value="{{$item->idDist}}" @if($item->idDist == 1292) selected @endif>{{$item->distrito}}</option>
+                                    @endforeach
+                               </select>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="urbanization">Urbanización</label>
-                            <input id="urbanization" type="text" class="form-control"
-                                   name="urbanization"
+                            <label for="zona">Zona</label>
+                            <input type="text" class="form-control"
+                                   name="zona" id="zona"
                                    required>
                         </div>
+                        
                         <div class="form-group">
                             <label for="cost">Costo de Envio</label>
                             <input type="text" class="form-control"
                                    name="cost" id="cost"
                                    required>
                         </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -145,9 +178,9 @@
                     {{ method_field('PUT') }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="urbanization">Urbanización</label>
-                            <input id="urbanization" type="text" class="form-control"
-                                   name="urbanization"
+                            <label for="zona">Zona</label>
+                            <input id="zona" type="text" class="form-control"
+                                   name="zona"
                                    required>
                         </div>
                         <div class="form-group">
@@ -182,10 +215,10 @@
         $('#modalUpdate').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget);
             let id = button.data('id');
-            let urbanization = button.data('urbanization');
+            let zona = button.data('zona');
             let cost = button.data('cost');
             let modal = $(this);
-            modal.find(".modal-body input[name='urbanization']").val(urbanization);
+            modal.find(".modal-body input[name='zona']").val(zona);
             modal.find(".modal-body input[name='cost']").val(cost);
 
             let form = $('#form_shipping_cost_update');
@@ -223,4 +256,49 @@
             update(data, url);
         }
     </script>
+    <script>
+        $(function(params) {
+            $('#select_departamento').on('change', onSelectDepartamentoChange);
+    
+        });
+    
+        function onSelectDepartamentoChange(params) {
+            var departamento_id = $(this).val();
+            if (!departamento_id) {
+                 $('#select_provincia').html('<option value="">Provincia</option>');
+                 return;
+            }
+            $.get('/departamento/'+departamento_id+'/provincia',function(data){
+                var html_select = '<option value="">Provincia</option>';
+                for (let i = 0; i < data.length; i++)
+                   html_select += '<option value="'+data[i].idProv+'">'+data[i].provincia+'</option>';
+                   $('#select_provincia').html(html_select);     
+                   $('#select_distrito').html('<option value="">Distrito</option>');     
+            });
+        }
+
+        
+        </script>
+         <script>
+            $(function(params) {
+                $('#select_provincia').on('change', onSelectProvinciaChange);
+        
+            });
+        
+            function onSelectProvinciaChange(params) {
+                var provincia_id = $(this).val();
+                if (!provincia_id) {
+                     $('#select_distrito').html('<option value="">Distrito</option>');
+                     return;
+                }
+                $.get('/provincia/'+provincia_id+'/distrito',function(data){
+                    var html_select = '<option value="">Distrito</option>';
+                    for (let i = 0; i < data.length; i++)
+                       html_select += '<option value="'+data[i].idDist+'">'+data[i].distrito+'</option>';
+                       $('#select_distrito').html(html_select);         
+                });
+            }
+    
+            
+            </script>
 @endsection

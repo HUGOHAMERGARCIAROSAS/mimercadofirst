@@ -53,10 +53,15 @@
             <a href="{{ route('categories.index') }}" class="btn btn-info btn-lg ml-15">
                 <i class="fa fa-plus-square"></i> Nueva Categoría
             </a>
-            <a href="{{ route('admin.product.updateCategory') }}" class="btn btn-warning btn-lg ml-15">
+          <!--  <a href="{{ route('admin.product.updateCategory') }}" class="btn btn-warning btn-lg ml-15">
                 <i class="fa fa-plus-square"></i> Cambiar por Categorìa
-            </a>
-            <a href="{{ route('admin.product.exportProduct') }}" class="btn btn-success btn-lg ml-15"
+            </a> -->
+            <?php 
+                $id = auth()->user()->id;    
+            ?>
+              <a href="{{ route('admin.product.exportCategory',$id) }}" class="btn btn-warning btn-lg ml-15"
+              title="Exportar en Excel">
+            <a href="{{ route('admin.product.exportProduct',$id) }}" class="btn btn-success btn-lg ml-15"
                title="Exportar en Excel">
                 <i class="fa fa-file-excel-o"></i>Exportar Productos (excel)
             </a>
@@ -87,10 +92,10 @@
                         <th>Orden</th>
                         <th>Producto</th>
                         <th>Descripción</th>
-                        <th class="text-center">Costo</th>
+                        <!--<th class="text-center">Costo</th>
                         <th class="text-center">Porcentaje</th>
-                        <th class="text-center">Monto</th>
-                        <th class="text-center">Precio Final</th>
+                        <th class="text-center">Monto</th>-->
+                        <th class="text-center">Precio</th>
                         <th class="text-center">Proveedor</th>
                         <th class="text-center">Unidades</th>
                         <th class="text-center">Escala</th>
@@ -114,7 +119,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Importar Productos</h5>
             </div>
-            <form action="{{route('import-excel')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('import-excel',$id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="modal-body">
                     <div class="form-group">
@@ -160,6 +165,11 @@
                                 title="Eliminar">
                             <i class="fa fa-trash-o"></i>
                         </button>
+                        <a href="@{{galeryUrl}}"
+                        class="btn btn-warning btn-sm"
+                        title="Galeria">
+                         <i class="fa fa-file-image-o"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -363,18 +373,18 @@
                     orderable: true, searchable: true,
                 },
                
-                {
-                    data: 'price',
-                    orderable: true, searchable: false
-                },
-                {
-                    data: 'porcentaje',
-                    orderable: true, searchable: false
-                },
-                {
-                    data: 'monto',
-                    orderable: true, searchable: false
-                },
+              //  {
+                //    data: 'price',
+                  //  orderable: true, searchable: false
+               // },
+               // {
+                 //   data: 'porcentaje',
+                   // orderable: true, searchable: false
+               // },
+              //  {
+                //    data: 'monto',
+                  //  orderable: true, searchable: false
+               // },
                 
                 
                 {
@@ -397,11 +407,11 @@
                 },
                 {
                     data: 'product_today',
-                    orderable: true, searchable: false
+                    orderable: true, searchable: true
                 },
                 {
                     data: 'disponible',
-                    orderable: true, searchable: false
+                    orderable: true, searchable: true
                 },
                 {
                     data: 'actions', render: function (data, type, row, meta) {
@@ -465,15 +475,15 @@
                 $('td:eq(1)', nRow).html('<a class="myeditables-class" href="#">' + data.orden + '</a>');
                 $('td:eq(2)', nRow).html('<a class="myeditables-class" href="#">' + data.name + '</a>');
                 $('td:eq(3)', nRow).html('<a class="myeditables-class" href="#">' + data.description + '</a>');
-                $('td:eq(4)', nRow).html('<a class="myeditables-class" href="#">' + data.price + '</a>');
-                $('td:eq(5)', nRow).html('<a class="myeditables-class" href="#">' + data.porcentaje + '</a>');
-                $('td:eq(6)', nRow).html('<a class="myeditables-class" href="#">' + data.monto + '</a>');
-                $('td:eq(7)', nRow).html('<a class="myeditables-class" href="#">' + data.final + '</a>');
-                $('td:eq(8)', nRow).html('<a class="myeditables-class" href="#">' + data.provider_id + '</a>');
-                $('td:eq(9)', nRow).html('<a class="myeditables-class" href="#">' + data.product_unit_measure_abrv + '</a>');
-                $('td:eq(10)', nRow).html('<a class="myeditables-class" href="#">' + data.product_scale_value + '</a>');
-                $('td:eq(11)', nRow).html('<a class="myeditables-class" href="#">' + (data.product_today == 0 ? 'NO' : 'SI') + '</a>');
-                $('td:eq(12)', nRow).html('<a class="myeditables-class" href="#">' + data.disponible + '</a>');
+                //$('td:eq(4)', nRow).html('<a class="myeditables-class" href="#">' + data.price + '</a>');
+                //$('td:eq(5)', nRow).html('<a class="myeditables-class" href="#">' + data.porcentaje + '</a>');
+                //$('td:eq(6)', nRow).html('<a class="myeditables-class" href="#">' + data.monto + '</a>');
+                $('td:eq(4)', nRow).html('<a class="myeditables-class" href="#">' + data.final + '</a>');
+                $('td:eq(5)', nRow).html('<a class="myeditables-class" href="#">' + data.provider_id + '</a>');
+                $('td:eq(6)', nRow).html('<a class="myeditables-class" href="#">' + data.product_unit_measure_abrv + '</a>');
+                $('td:eq(7)', nRow).html('<a class="myeditables-class" href="#">' + data.product_scale_value + '</a>');
+                $('td:eq(8)', nRow).html('<a class="myeditables-class" href="#">' + (data.product_today == 0 ? 'NO' : 'SI') + '</a>');
+                $('td:eq(9)', nRow).html('<a class="myeditables-class" href="#">' + data.disponible + '</a>');
                 
                 $('td:eq(1) a', nRow).editable({
                     type: 'text',
@@ -562,8 +572,8 @@
                         });
                     }
                 });
-
-                $('td:eq(6) a', nRow).editable({
+                /*
+                $('td:eq(9) a', nRow).editable({
                     type: 'text',
                     name: 'monto',
                     params: function (params) {
@@ -579,7 +589,7 @@
                             toastr['error'](value[0]);
                         });
                     }
-                });
+                });*/
                 $('td:eq(7) a', nRow).editable({
                     type: 'text',
                     name: 'final',
@@ -597,6 +607,7 @@
                         });
                     }
                 });
+                /*
                 $('td:eq(8) a', nRow).editable({
                     type: 'text',
                     provider_id: 'provider_id',
@@ -613,9 +624,9 @@
                             toastr['error'](value[0]);
                         });
                     }
-                });
+                });*/
 
-                $('td:eq(9) a', nRow).editable({
+                $('td:eq(6) a', nRow).editable({
                     type: 'select',
                     name: 'product_unit_measure_id',
                     value: data.product_unit_measure_id,
@@ -639,7 +650,7 @@
                     }
                 });
 
-                $('td:eq(10) a', nRow).editable({
+                $('td:eq(7) a', nRow).editable({
                     type: 'select',
                     name: 'product_scale_id',
                     value: data.product_scale_id,
@@ -668,7 +679,7 @@
                     }
                 });
 
-                $('td:eq(11) a', nRow).editable({
+                $('td:eq(8) a', nRow).editable({
                     type: 'select',
                     name: 'product_today',
                     value: data.product_today,
@@ -691,7 +702,7 @@
                     }
                 });
 
-                $('td:eq(12) a', nRow).editable({
+                $('td:eq(9) a', nRow).editable({
                     type: 'select',
                     name: 'disponible',
                     value: data.disponible,

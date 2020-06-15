@@ -15,8 +15,9 @@ use App\Http\Controllers\Controller;
 use App\src\Models\Product;
 use App\src\Models\ProductUnitMeasure;
 use App\src\Models\ProductSubCategory;
-
+use App\Admin;
 use Exception;
+use App\src\Models\Category;
 use DB;
 use Log;
 use Maatwebsite\Excel\Facades\Excel;
@@ -55,15 +56,18 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
+
         return view('admin.pages.product.index');
     }
 
     public function listProductsDataTable()
     {
+        $variable = auth()->user()->id;
+        $usuarios = Admin::where('id', $variable)->first();
 //        $product = $this->productRepository->listProductsInOrderDatatable();
         //            ->orderByRaw('ISNULL(product.orden), product.orden ASC')
         $product = Product::with(['productUnitMeasure', 'productScale'])
-            ->where('state', '1');
+            ->where('state', '1')->where('provider_id', $variable);
 
         return Datatables::eloquent($product)
             ->addColumn('image', function ($row) {
@@ -72,10 +76,12 @@ class ProductController extends Controller
             ->addColumn('actions', function ($row) {
                 $editUrl = route('products.edit', $row->id);
                 $deleteUrl = route('products.destroy', $row->id);
+                $galeryUrl = route('productos.galeria', $row->id);
                 $id = $row->id;
                 return ([
                     'editUrl' => $editUrl,
                     'deleteUrl' => $deleteUrl,
+                    'galeryUrl' => $galeryUrl,
                     'id' => $id,
                     'total' => $this->productRepository->totalProducts(),
                 ]);
@@ -106,11 +112,12 @@ class ProductController extends Controller
     public function create()
     {
         $totalProducts = $this->productRepository->totalProductForCreate();
-
+        $variable = auth()->user()->id;
+        $categories = Category::where('proveedor_id', $variable)->get();
         return view('admin.pages.product.create')->with([
             'productUnitMeasure' => $this->productUnitMeasureRepository->all(),
             'productScale' => $this->productScaleRepository->all(null, 'id', 'ASC'),
-            'categories' => $this->categoryRepository->allWithEstateActive('id', 'asc'),
+            'categories' => $categories,
             'totalProducts' => $totalProducts,
         ]);
     }
@@ -129,7 +136,7 @@ class ProductController extends Controller
 
             $product->uploadImage(request()->file('image'), 'image');
 
-            $product->compressImage($request->hasFile('image'));
+          //  $product->compressImage($request->hasFile('image'));
 
             DB::commit();
             Mensaje::flashCreateSuccessImportant();
@@ -145,11 +152,20 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        if( auth()->user()->role == 'provider'){
+            $variable = auth()->user()->id;
+            $categories = Category::where('proveedor_id', $variable)->get();
+        }else{
+            $busqueda_proveedor = Product::where('id', $id)->first();
+            $categories = Category::where('proveedor_id', $busqueda_proveedor->provider_id)->get();
+        }
+       
+      
         return view('admin.pages.product.edit')->with([
             'product' => $this->productRepository->find($id),
             'productUnitMeasure' => $this->productUnitMeasureRepository->all(),
             'productScale' => $this->productScaleRepository->all(null, 'id', 'ASC'),
-            'categories' => $this->categoryRepository->allWithEstateActive('id', 'asc'),
+            'categories' => $categories,
             'totalProducts' => $this->productRepository->totalProducts(),
         ]);
     }
@@ -164,13 +180,23 @@ class ProductController extends Controller
             $product = $this->productRepository->find($id);
             $product->name = $request->input('name');
             $product->price = $request->input('price');
-            $product->porcentaje = $request->input('porcentaje');
-            $product->final = $request->input('final');
-            $product->provider_id = $request->input('provider_id');
+//$product->provider_id = $request->input('provider_id');
             $product->description = $request->input('description');
             $product->product_unit_measure_id = $request->input('product_unit_measure_id');
             $product->product_scale_id = $request->input('product_scale_id');
-            $product->product_sub_category_id = $request->input('product_sub_category_id');
+            $product->category_id = $request->input('category_id');
+            //detalle del producto
+            $product->sku = $request->input('sku');
+            $product->modelo = $request->input('modelo');
+            $product->pais = $request->input('pais');
+            $product->peso = $request->input('peso');
+            $product->color = $request->input('color');
+            $product->material = $request->input('material');
+            $product->garantia = $request->input('garantia');
+            $product->condicion = $request->input('condicion');
+            $product->detalle_condicion = $request->input('detalle_condicion');
+            $product->caja = $request->input('caja');
+
 
             $rangoMaximo = $this->productRepository->totalProducts();
             if ($requestOrder > $rangoMaximo) {
@@ -565,17 +591,31 @@ class ProductController extends Controller
         ]);
     }
 
-    public function exportProduct()
-    {   $productos = Product::all();
-        Excel::create('MiMercadoDelivery', function ($excel) use ($productos) {
+    public function exportProduct($id)
+    {   $productos = Product::where('provider_id' , $id)->where('state',1)->get();
+        Excel::create('Jinatin', function ($excel) use ($productos) {
           
             /** La hoja se llamará Usuarios */
-            $excel->sheet('Asistencia', function ($sheet) use ($productos) {
+            $excel->sheet('Productos', function ($sheet) use ($productos) {
                 /** El método loadView nos carga la vista blade a utilizar */
                 $sheet->loadView('admin.pages.product.export', compact('productos'));
             });
         })->download('xlsx');
    }
+
+   public function exportCategoria($id)
+   {   $categorias = Category::where('proveedor_id' , $id)->get();
+       Excel::create('Subcategoria', function ($excel) use ($categorias) {
+         
+           /** La hoja se llamará Usuarios */
+           $excel->sheet('Categorias', function ($sheet) use ($categorias) {
+               /** El método loadView nos carga la vista blade a utilizar */
+               $sheet->loadView('admin.pages.product.export_category', compact('categorias'));
+           });
+       })->download('xlsx');
+  }
+
+
 
     public function updateProductWithAjax(Request $request)
     {
@@ -630,78 +670,105 @@ class ProductController extends Controller
         ]);
     }
 
-    public function importarExcel(Request $request){
-  
+    public function importarExcel(Request $request , $id){
+         
         try {
             
             DB::beginTransaction();
-          
-         /** El método load permite cargar el archivo definido como primer parámetro */
-        \Excel::load($request->excel, function($reader) {
+      
+         /** El método load permite cargar el arikchivo definido como primer parámetro */
+        \Excel::load($request->excel, function($reader) use ($id) {
            
             $excel = $reader->get();
-            
-            $reader->each(function ($value) {
+           
+            $reader->each(function ($value) use ($id) {
+               // dd($id);
                 $fila = $value->id;
-                $busqueda_productos = Product::where('id',intval($value->id))->first();
-               
+                $busqueda_productos = Product::where('name',$value->nombre)->where('provider_id',$id)->first();
+               // dd($busqueda_productos);
                 if(!isset($busqueda_productos)){
                 $productos = Product::orderBy('orden','desc')->get();
                 $aux = $productos[0]->orden +1;
-                $producto = new Product();
+                $producto = new Product;
                 $producto->orden = $aux;
-                $producto->disponible = 'NO';
-                $producto->product_today = 0;
+                $producto->disponible = $value->disponible;
+                if($value->oferta == 'NO'){
+                    $oferta = 0;
+                }else{
+                    $oferta = 1;
+                }
+                $producto->product_today = $oferta;
                 $producto->name = $value->nombre;
                // $producto->slug = $value->slug;
                 $producto->price = $value->precio;
-                $producto->porcentaje = $value->porcentaje;
-                $producto->monto = $value->monto;
-                $producto->final = $value->precio_final;
+                $producto->final = $value->precio;
+                $producto->porcentaje = 0;
+                $producto->monto = 0;
+                $producto->final = $value->precio;
                 $producto->state = 1;
                 $producto->description = $value->descripcion;
+                $producto->provider_id = $id;
                 
-                $busqueda_escala = ProductUnitMeasure::where('name',$value->escala)->where('abrv',$value->unidades)->first();
+                $busqueda_escala = ProductUnitMeasure::where('abrv', $value->unidades)->first();
                 
                 $producto->product_scale_id = 1 ;
                 
                 $producto->product_unit_measure_id = $busqueda_escala->id;
                 //$busqueda_subcategoria = ProductSubCategory::where('id',intval($value->sub_categoria_2))->first();
                
-                $producto->product_sub_category_id = intval($value->sub_categoria_2);
+                $producto->category_id = intval($value->categoria_id);
                 //$producto->image = 'img/product/'.$value->imagen;
-          
+                $producto->sku = $value->sku;
+                $producto->pais = $value->pais;
+                $producto->peso = floatval($value->peso);
+                $producto->color = $value->color;
+                $producto->material = $value->material;
+                $producto->garantia = $value->garantia;
+                $producto->condicion = $value->condicion;
+                $producto->detalle_condicion = $value->detalle_condicion;
+                $producto->caja = $value->caja;
+                $producto->modelo = $value->modelo;
+                
                 $producto->save();
                     
                 }
                 else{
-                    $busqueda_productos->orden = $value->orden;
-                $busqueda_productos->disponible = 'NO';
-                $busqueda_productos->product_today = 0;
+                $busqueda_productos->disponible = $value->disponible;
+                if($value->oferta == 'NO'){
+                    $oferta = 0;
+                }else{
+                    $oferta = 1;
+                }
+                $busqueda_productos->product_today = $oferta;
                 $busqueda_productos->name = $value->nombre;
                // $producto->slug = $value->slug;
                 $busqueda_productos->price = $value->precio;
-                $busqueda_productos->porcentaje = $value->porcentaje;
-                $busqueda_productos->monto = $value->monto;
-                $busqueda_productos->final = $value->precio_final;
+                $busqueda_productos->porcentaje = 0;
+                $busqueda_productos->monto = 0 ;
+                $busqueda_productos->final = $value->precio;
                 $busqueda_productos->state = 1;
                 $busqueda_productos->description = $value->descripcion;
                 
-                $busqueda_escala = ProductUnitMeasure::where('name',$value->escala)->where('abrv',$value->unidades)->first();
-                
+                $busqueda_escala = ProductUnitMeasure::where('abrv',$value->unidades)->first();
+               
                 $busqueda_productos->product_scale_id = 1 ;
                 
                 $busqueda_productos->product_unit_measure_id = $busqueda_escala->id;
                
-                    $busqueda_subcategoria = ProductSubCategory::where('id',intval($value->sub_categoria_2))->first();
-                //if(isset($busqueda_subcategoria)){
-                        $busqueda_subcategoria->sub_category_id = intval($value->sub_categoria_1);
-                        $busqueda_subcategoria->save();
-                    
-                        $busqueda_productos->product_sub_category_id = intval($value->sub_categoria_2);
+                $busqueda_productos->category_id = intval($value->categoria_id);
                         //$producto->image = 'img/product/'.$value['imagen;
-                        $busqueda_productos->save();
-                //    }
+                $busqueda_productos->sku = $value->sku;
+                $busqueda_productos->pais = $value->pais;
+                $busqueda_productos->peso = floatval($value->peso);
+                $busqueda_productos->color = $value->color;
+                $busqueda_productos->material = $value->material;
+                $busqueda_productos->garantia = $value->garantia;
+                $busqueda_productos->condicion = $value->condicion;
+                $busqueda_productos->detalle_condicion = $value->detalle_condicion;
+                $busqueda_productos->caja = $value->caja;
+                $busqueda_productos->modelo = $value->modelo;
+                $busqueda_productos->save();
+                
          
                 }
               
@@ -709,7 +776,6 @@ class ProductController extends Controller
           
            
         });
-        
         DB::commit();
   
     } catch (Exception $e) {
@@ -717,11 +783,12 @@ class ProductController extends Controller
         DB::rollBack();
         Log::error($e->getLine());
 
-        return redirect()->route('products.index')->with('status', 'Error no se actualizo la base de datos, verifique si la subcategorias, unidades o escalas existen');
+        return redirect()->route('products.index')->with('status', 'Error no se actualizo la base de datos, verifique si la categoria, unidades o escalas existen');
         
     }
+      
  
-    return redirect()->route('products.index')->with('status', 'Productos actualizados correctamente !!');
+    return back()->with('status', 'Productos actualizados correctamente !!');
             
         
         

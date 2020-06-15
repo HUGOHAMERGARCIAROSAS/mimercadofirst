@@ -101,6 +101,11 @@
                 <form action="{{ route('coupons.store') }}" method="post">
                     {{  csrf_field() }}
                     <div class="modal-body">
+                        <?php $proveedor_id = auth()->user()->id; ?>
+                        <input type="hidden" class="form-control"
+                        name="proveedor_id"
+                        required value="{{$proveedor_id}}"
+                        >  
                         <div class="form-group">
                             <label for="code">Código</label>
                             <input id="code" type="text" class="form-control"
@@ -149,4 +154,50 @@
             $("input[name='code']").val(code);
         }
     </script>
+    <script>
+        $(function(params) {
+            $('#select_departamento').on('change', onSelectDepartamentoChange);
+    
+        });
+    
+        function onSelectDepartamentoChange(params) {
+            var departamento_id = $(this).val();
+            if (!departamento_id) {
+                 $('#select_provincia').html('<option value="">Provincia</option>');
+                 return;
+            }
+            $.get('/departamento/'+departamento_id+'/provincia',function(data){
+                var html_select = '<option value="">Provincia</option>';
+                for (let i = 0; i < data.length; i++)
+                   html_select += '<option value="'+data[i].idProv+'">'+data[i].provincia+'</option>';
+                   $('#select_provincia').html(html_select);     
+                   $('#select_distrito').html('<option value="">Distrito</option>');     
+            });
+        }
+
+        
+        </script>
+         <script>
+            $(function(params) {
+                $('#select_provincia').on('change', onSelectProvinciaChange);
+        
+            });
+        
+            function onSelectProvinciaChange(params) {
+                var provincia_id = $(this).val();
+                if (!provincia_id) {
+                     $('#select_distrito').html('<option value="">Distrito</option>');
+                     return;
+                }
+                $.get('/provincia/'+provincia_id+'/distrito',function(data){
+                    var html_select = '<option value="">Distrito</option>';
+                    for (let i = 0; i < data.length; i++)
+                       html_select += '<option value="'+data[i].idDist+'">'+data[i].distrito+'</option>';
+                       $('#select_distrito').html(html_select);         
+                });
+            }
+    
+            
+            </script>
+    
 @endsection

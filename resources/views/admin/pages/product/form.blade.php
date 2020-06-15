@@ -48,17 +48,17 @@
     </div>
     <input type="hidden" class="form-control"
                    name="monto"
-                   value="{{  old('monto') }}"
+                   value="0"
                    required
             >
             <input type="hidden" class="form-control"
                    name="porcentaje"
-                   value="{{  old('porcentaje') }}"
+                   value="0"
                    required
             >
             <input type="hidden" class="form-control"
                    name="final"
-                   value="{{  old('final') }}"
+                   value="{{  $product->price or old('price') }}"
                    required
             >
             <input type="hidden" class="form-control"
@@ -83,6 +83,10 @@
         </div>
     </div>
 
+    <input type="hidden" class="form-control"
+    name="provider_id"
+    required value="{{auth()->user()->id}}"
+    >
     <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
             <label for="scale">Cantidad, Escala <span class="required">*</span></label>
@@ -103,7 +107,7 @@
                     required>
                 <option value="" selected>Seleccione</option> <!--Agregue esta linea-->
                 @foreach($categories as $item)
-                    @if (!empty($product) && ($item->id == $product->productSubCategory->subCategory->category->id))
+                    @if (!empty($product) && ($item->id == $product->category->id))
                         <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                     @else
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -112,37 +116,101 @@
             </select>
         </div>
     </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-12">
+  <!-- DETALLE DEL PRODUCTO -->
+    <div class="col-lg-3">
         <div class="form-group">
-            <label for="sub_category_id">Sub Categoría 1<span class="required">*</span></label>
-            <select name="sub_category_id" class="form-control" id="sub_category_id"
-                    onchange="searchSubCategory2(this.value, '{{ route('admin.product.searchSubCategory2') }}')"
-                    required>
-                @if (!empty($product))
-                    <option value="{{$product->productSubCategory->subCategory->id}}"
-                            selected>{{ $product->productSubCategory->subCategory->name }}</option>
-                @else
-                    <option value="" selected>Seleccione una Categoria</option>
-                @endif
-            </select>
+            <label>SKU <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="sku"
+                   value="{{ $product->sku or old('sku') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>Modelo <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="modelo"
+                   value="{{ $product->modelo or old('modelo') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>País <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="pais"
+                   value="{{ $product->pais or old('pais') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>Peso (kg) <span class="required"></span></label>
+            <input type="number" class="form-control"
+                   name="peso"
+                   value="{{ $product->peso or old('peso') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="form-group">
+            <label>Color <span class="required"></span></label>
+            <input type="color" class="form-control"
+                   name="color"
+                   value="{{ $product->color or old('color') }}"
+            >
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="col-lg-3">
         <div class="form-group">
-            <label for="product_sub_category_id">Sub Categoría 2<span class="required">*</span></label>
-            <select name="product_sub_category_id" class="form-control" id="product_sub_category_id"
-                    required>
-                @if (!empty($product))
-                    <option value="{{$product->productSubCategory->id}}"
-                            selected>{{ $product->productSubCategory->name }}</option>
-                @else
-                    <option value="" selected>Seleccione una Categoria</option>
-                @endif
-            </select>
+            <label>Material <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="material"
+                   value="{{ $product->material or old('material') }}"
+            >
         </div>
     </div>
+    <div class="col-lg-9">
+        <div class="form-group">
+            <label>Garantia del Producto <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="garantia"
+                   value="{{ $product->garantia or old('garantia') }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>Condición del Producto <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="condicion"
+                   value="{{ $product->condicion or old('condicion') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="form-group">
+            <label>Detalle condición física del producto <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="detalle_condicion"
+                   value="{{ $product->detalle_condicion or old('detalle_condicion') }}"
+            >
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label>¿Qué hay en la caja? <span class="required"></span></label>
+            <input type="text" class="form-control"
+                   name="caja"
+                   value="{{ $product->caja or old('caja') }}"
+            >
+        </div>
+    </div>
+
+    <!--HASTA ACA ES EL DETALLE DEL PRODUCTO -->
 
     <div class="col-lg-12 col-md-6 col-sm-12">
         <div class="form-group">

@@ -23,7 +23,7 @@ Route::post('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.lo
 
 Route::group(['middleware' => 'auth:admin'], function () {
 
-    Route::get('/administrador/pyrus/mimercado/login', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('/administrador/pyrus/jinatin/login', 'Admin\AdminController@index')->name('admin.index');
 
     Route::post('checkout/cambiar/{id}', 'Web\CheckoutController@cambiar')->name('admin.cambiar');
     Route::post('/admin/products/existSlider', 'Admin\ProductController@existSlider')->name('admin.product.existProduct');
@@ -40,18 +40,32 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/admin/products/searchSubCategoryAjax', 'Admin\ProductController@searchSubCategoryAjax')->name('admin.product.searchSubCategory');
     Route::post('/admin/products/searchSubCategory2Ajax', 'Admin\ProductController@searchSubCategory2Ajax')->name('admin.product.searchSubCategory2');
     Route::get('/admin/products/listProducts', 'Admin\ProductController@listProductsDataTable')->name('admin.product.listProducts');
+    Route::get('/admin/products/listProducts/prov/{xd}', 'Admin\ProviderController@listProductsDataTable')->name('admin.product.listProducts.prov');
     Route::get('/admin/products/listProductsCategory', 'Admin\ProductController@listProductsDataTableCategory')->name('admin.product.listProductsCategory');
-    Route::get('/admin/products/exportProducts', 'Admin\ProductController@exportProduct')->name('admin.product.exportProduct');
+    Route::get('/admin/products/exportProducts/{id}', 'Admin\ProductController@exportProduct')->name('admin.product.exportProduct');
+    Route::get('/admin/products/exportCategorias/{id}', 'Admin\ProductController@exportCategoria')->name('admin.product.exportCategory');
     Route::resource('/admin/products', 'Admin\ProductController');
 
+
+    //GALERIA DEL PRODUCTO
+Route::get('/productos/galeria/{id}','Admin\GaleriaController@index')->name('productos.galeria');
+Route::post('/productos/galeria/{id}','Admin\GaleriaController@store')->name('productos.galeria.agregar');
+Route::get('/productos/galeria-delete/{id}','Admin\GaleriaController@delete')->name('productos.galeria-delete');
+
     Route::resource('/admin/coupons', 'Admin\CouponController');
+    Route::get('/departamento/{departamento_id}/provincia', 'Admin\CouponController@getProvincias');
+    Route::get('/provincia/{provincia_id}/distrito', 'Admin\CouponController@getDistritos');
 
     Route::get('/admin/providers/index','Admin\ProviderController@index')->name('admin.providers.index');
     Route::get('/admin/providers/create','Admin\ProviderController@create')->name('admin.providers.create');
     Route::post('/admin/providers/store','Admin\ProviderController@store')->name('admin.providers.store');
     Route::post('/admin/providers/guardar','Admin\ProviderController@guardar')->name('admin.providers.guardar');
-    Route::get('/admin/providers/productos','Admin\ProviderController@productos')->name('admin.providers.productos');
-    Route::get('/admin/users', 'Admin\UserController@index')->name('admin.users.index');
+        Route::get('/admin/providers/guardar/productos/{id}','Admin\ProviderController@createProduct')->name('products_provider.create');
+        Route::get('/admin/providers/ver/categoria/{id}','Admin\ProviderController@categoryVer')->name('products_provider.category.ver');
+        Route::post('/admin/providers/guardar/categoria','Admin\ProviderController@store_category')->name('categories_desde_prov.store');
+        Route::get('/admin/providers/productos','Admin\ProviderController@productos')->name('admin.providers.productos');
+        Route::get('/provider/update-visibilidad/{id}','Admin\ProviderController@updateVisibilidad')->name('provider.update-visibilidad');
+        Route::get('/admin/users', 'Admin\UserController@index')->name('admin.users.index');
         Route::post('update_productOrden', 'Admin\ProductController@updateProductOrden')->name('admin.product.updateProductOrden');
 
     Route::post('update_productPorcentaje', 'Admin\ProductController@updateProductPorcentaje')->name('admin.product.updateProductPorcentaje');
@@ -87,8 +101,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/admin/providers/create','Admin\ProviderController@create')->name('admin.providers.create');
     Route::post('/admin/providers/store','Admin\ProviderController@store')->name('admin.providers.store');
     Route::post('/admin/providers/guardar','Admin\ProviderController@guardar')->name('admin.providers.guardar');
-    Route::get('/admin/providers/asignar','Admin\ProviderController@updateCategory')->name('admin.providers.asignar');
-    Route::post('/admin/products/asignacion', 'Admin\ProviderController@updateCategory2')->name('admin.provider.updateCategory2');
+    Route::get('/admin/providers/orders', 'Admin\ProviderController@pedidos')->name('admin.providers.pedidos');
+    
+    //Route::get('/admin/providers/asignar','Admin\ProviderController@updateCategory')->name('admin.providers.asignar');
+    //Route::post('/admin/products/asignacion', 'Admin\ProviderController@updateCategory2')->name('admin.provider.updateCategory2');
+    Route::get('/admin/providers/productos/edit/{id}','Admin\ProviderController@edit')->name('admin.providers.edit');
     Route::get('/admin/providers/productos','Admin\ProviderController@productos')->name('admin.providers.productos');
     Route::get('/admin/provider/listProducts', 'Admin\ProviderController@listProductsDataTable')->name('admin.provider.listProducts');
     Route::post('provider/update_productPrice', 'Admin\ProviderController@updateProductPrice')->name('admin.provider.updateProductPrice');
@@ -101,7 +118,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/admin/productos/listProductss', 'Admin\ProviderProductoController@listProductsDataTable')->name('admin.producto.listProducts');
     Route::delete('/provider/delete/{id}', 'Admin\ProviderProductoController@destroy')->name('admin.provider.destroy');
     Route::get('/admin/provider/ver/{id}', 'Admin\ProviderController@ver')->name('admin.provider.ver');
-    Route::put('actualizar_usuario/{id}', 'Admin\ProviderController@updateUser')->name('admin.provider.update');
+    Route::post('actualizar_usuario/{id}', 'Admin\ProviderController@updateUser')->name('admin.provider.update');
 
     Route::resource('/admin/shipping-cost', 'Admin\ShippingCostController');
     Route::post('/admin/shipping-cost/updateOrder', 'Admin\ShippingCostController@updateOrder')->name('admin.shipping.updateOrder');
@@ -116,6 +133,16 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('/admin/categories/update_in_table', 'Admin\CategoryController@updateInTable')->name('admin.category.updateInTable');
     Route::post('/admin/categories/search', 'Admin\CategoryController@search')->name('admin.category.search');
     Route::post('/admin/categories/searchSubCategories', 'Admin\CategoryController@searchSubCategories')->name('admin.category.searchSubCategories');
+
+    //CATEGORIAS DEL PROVEEDOR
+    Route::resource('/admin/categories_prov', 'Admin\CategoryProvController');
+    Route::post('/admin/categories_prov/changeOrder', 'Admin\CategoryProvController@changeOrder')->name('admin.category_prov.changeOrder');
+    Route::post('/admin/categories_prov/update_in_table', 'Admin\CategoryProvController@updateInTable')->name('admin.category_prov.updateInTable');
+    Route::post('/admin/categories_prov/search', 'Admin\CategoryProvController@search')->name('admin.category_prov.search');
+    Route::post('/admin/categories_prov/searchSubCategories', 'Admin\CategoryProvController@searchSubCategories')->name('admin.category_prov.searchSubCategories');
+    
+    Route::get('/categoria/{category_id}/buscar', 'Admin\CategoryProvController@buscarSubCategorias');
+    //CATEGORIAS DEL PROVEEDOR
 
     Route::resource('/admin/subcategories-1', 'Admin\SubCategoryController');
     Route::post('/admin/subcategories/update_in_table', 'Admin\SubCategoryController@updateInTable')->name('admin.subcategory.updateInTable');
@@ -249,4 +276,4 @@ Route::get('{slugCategory}', 'Web\CategoryController@searchProductsInCategory')-
 Route::get('{slugCategory}/{slugSubcategory}', 'Web\CategoryController@searchProductsInSubCategory')->name('web.search.productsInSubCategory');
 Route::get('{slugCategory}/{slugSubcategory}/{slugProductSubCategory}', 'Web\CategoryController@searchProductsInProductSubCategory')->name('web.search.productsInProductSubCategory');
 
-Route::post('/import-excel', 'Admin\ProductController@importarExcel')->name('import-excel');
+Route::post('/import-excel/{id}', 'Admin\ProductController@importarExcel')->name('import-excel');

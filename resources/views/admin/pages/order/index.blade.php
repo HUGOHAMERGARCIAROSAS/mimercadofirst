@@ -28,8 +28,9 @@
                                 <th>Usuario</th>
                                 <th>Telefono</th>
                                 <th>Correo</th>
+                                <th>Proveedor</th>
                                 <th>Dirección de Envió</th>
-                                <th>Urbanización</th>
+                                <th>Zona</th>
                                 <th>Medio de Pago</th>
                                 <th>Fecha</th>
                                 <th class="text-center">Acciones</th>
@@ -44,8 +45,9 @@
                                     <td>{{ $order->user->name. ' ' . $order->user->last_name }}</td>
                                     <td>{{ $order->user->phone }}</td>
                                     <td>{{ $order->user->email }}</td>
+                                    <td>{{ $order->orderDetail[0]->product->admin->razon_social }}</td>
                                     <td>{{ $order->address }}</td>
-                                    <td>{{ $order->shippingCost->urbanization }}</td>
+                                    <td>{{ $order->shippingCost->zona }}</td>
                                     <td>{{ $order->payment_method }}</td>
                                     <td>{{ $order->created_at->format('d-m-Y') }}</td>
                                     <td class="text-center">

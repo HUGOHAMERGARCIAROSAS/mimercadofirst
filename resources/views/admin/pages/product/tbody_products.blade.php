@@ -18,7 +18,7 @@
             <a href="{{ assetImage($item->image) }}"
                data-lightbox="image-1">
                 <img src="{{ assetImage($item->image) }}"
-                     width="48" alt="">
+                     width="80" alt="">
             </a>
         </td>
         <td>{{ $item->name }}</td>
@@ -37,6 +37,8 @@
                title="Eliminar">
                 <i class="fa fa-trash-o"></i>
             </a>
+            
         </td>
+        
     </tr>
 @endforeach
